@@ -23,7 +23,7 @@ module.exports = (app)=>{
    
 //RESTfull ROUTES
  
-
+// INDEX
     app.get('/', (req,res)=>{
        res.redirect('/blogs');
     })
@@ -39,7 +39,30 @@ module.exports = (app)=>{
         
 
     });
+// NEW ROUTE
+    app.get( '/blogs/new', (req,res)=> {
+        res.render('new');
+    });
 
- 
+
+
+//CREATE ROUTE
+
+app.post('/blogs', urlencodedParser, (req,res)=> {
+    const title = req.body.title;
+    const image = req.body.image;
+    const body = req.body.body;
+    Blog.create({title: title, image: image, body: body},  (err, Blog)=>{
+        if(err){
+            res.render('new')
+        }else{
+            res.redirect('/blogs');
+        }
+    })
+    
+});
+
+
 
 };
+
