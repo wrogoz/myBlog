@@ -1,0 +1,12 @@
+
+
+<% blogs.forEach( (el)=> { %>
+<div>
+    <h1> <%= el.title %> </h1>
+    <img src="<%=el.image %>" alt="">
+    <p> <%= el.body %>
+    <p> <%= el.created %> </p>
+</div>
+<% }); %>
+
+
