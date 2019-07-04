@@ -1,10 +1,20 @@
 <%include ./partials/header %>
 
 <div CLASS="ui text container segment">
-    <div class="ui huge header">
+    <div class="ui huge header centered">
         <%= foundedBlog.title %>
-   
-        
+        <div class="ui top attached ">
+            <div class="item"></div>
+            <img class="ui centered rounded image" src="<%=foundedBlog.image %>" alt="">
+        </div>
+        <div class="content">
+            <span><%= foundedBlog.created.toDateString() %> </span>
+        </div>
     </div>
+    <div class="description">
+        <p> <%= foundedBlog.body %> </p>
+    </div>
+    
+   
 </div>
 <%include ./partials/footer %>

@@ -4,7 +4,7 @@
 <div>
     <h1 id='te'> <%= el.title %> </h1>
     <img src="<%=el.image %>" alt="">
-    <p> <%= el.body %> </p>
+    <p> <%= el.body.slice(0,25) %> </p>
     <p> <%= el.created %> </p>
     <a href="/blogs/<%=el._id %>" >Read more </a>
 </div>
