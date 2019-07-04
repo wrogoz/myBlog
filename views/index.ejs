@@ -1,8 +1,8 @@
-
+<%include ./partials/header %>
 
 <% blogs.forEach( (el)=> { %>
 <div>
-    <h1> <%= el.title %> </h1>
+    <h1 id='te'> <%= el.title %> </h1>
     <img src="<%=el.image %>" alt="">
     <p> <%= el.body %>
     <p> <%= el.created %> </p>
@@ -10,3 +10,4 @@
 <% }); %>
 
 
+<%include ./partials/footer %>
