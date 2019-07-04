@@ -62,7 +62,18 @@ app.post('/blogs', urlencodedParser, (req,res)=> {
     
 });
 
+//SHOW
 
+app.get('/blogs/:id', (req,res)=>{
+    Blog.findById(req.params.id, (err,foundedBlog)=> {
+        if(err){
+            res.redirect('/blogs');
+        
+        }else{
+            res.render('/show',{foundedBlog: foundedBlog})
+        }
+    })
+})
 
 };
 
