@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const expressSanitizer = require('express-sanitizer');
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
 const url = "mongodb+srv://test:test@camps-un0gw.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(url, {useNewUrlParser: true});
 
@@ -20,6 +20,7 @@ const Blog = mongoose.model( 'Blog', blogSchema );
 
 module.exports = (app)=>{
 
+    app.use(expressSanitizer());
    
 //RESTfull ROUTES
  
@@ -49,6 +50,7 @@ module.exports = (app)=>{
 //CREATE ROUTE
 
     app.post('/blogs', urlencodedParser, (req,res)=> {
+        req.body.body = req.sanitize( req.body.body );
         const title = req.body.title;
         const image = req.body.image;
         const body = req.body.body;
@@ -88,6 +90,7 @@ module.exports = (app)=>{
     });
     //UPDATE ROUTE
     app.put('/blogs/:id',urlencodedParser, (req,res)=>{
+        req.body.body = req.sanitize( req.body.body );
         const title = req.body.title;
         const image = req.body.image;
         const body = req.body.body;
