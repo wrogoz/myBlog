@@ -70,7 +70,7 @@ app.get('/blogs/:id', (req,res)=>{
             res.redirect('/blogs');
         
         }else{
-            res.render('/show',{foundedBlog:foundedBlog});
+            res.render('show',{foundedBlog: foundedBlog})
         }
     })
 })
