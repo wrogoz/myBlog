@@ -87,8 +87,18 @@ module.exports = (app)=>{
         });
     });
     //UPDATE ROUTE
-    app.put('/blogs/:id', (req,res)=>{
-        res.send("kekeke")
+    app.put('/blogs/:id',urlencodedParser, (req,res)=>{
+        const title = req.body.title;
+        const image = req.body.image;
+        const body = req.body.body;
+        Blog.findByIdAndUpdate(req.params.id, /*NEW DATA */ {title: title, image: image, body: body}, (err,update)=>{
+            if(err){
+                res.redirect('/blogs')
+            }else{
+                res.redirect(`/blogs/${req.params.id}`);
+                
+            }
+        })
     });
   
 };
