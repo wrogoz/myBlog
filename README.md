@@ -8,9 +8,9 @@
 - ejs
 - mongoose
 - body-parser
-- method-override
+- method override
 - semantic ui
-
+- express sanitizer
 
 # To do:
 - styling
