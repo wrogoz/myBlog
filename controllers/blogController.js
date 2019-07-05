@@ -48,32 +48,48 @@ module.exports = (app)=>{
 
 //CREATE ROUTE
 
-app.post('/blogs', urlencodedParser, (req,res)=> {
-    const title = req.body.title;
-    const image = req.body.image;
-    const body = req.body.body;
-    Blog.create({title: title, image: image, body: body},  (err, Blog)=>{
-        if(err){
-            res.render('new')
-        }else{
-            res.redirect('/blogs');
-        }
-    })
+    app.post('/blogs', urlencodedParser, (req,res)=> {
+        const title = req.body.title;
+        const image = req.body.image;
+        const body = req.body.body;
+        Blog.create({title: title, image: image, body: body},  (err, Blog)=>{
+            if(err){
+                res.render('new')
+            }else{
+                res.redirect('/blogs');
+            }
+    });
     
 });
 
-//SHOW
+    //SHOW
 
-app.get('/blogs/:id', (req,res)=>{
-    Blog.findById(req.params.id, (err,foundedBlog)=> {
-        if(err){
-            res.redirect('/blogs');
-        
-        }else{
-            res.render('show',{foundedBlog: foundedBlog})
-        }
+    app.get('/blogs/:id', (req,res)=>{
+        Blog.findById(req.params.id, (err,foundedBlog)=> {
+            if(err){
+                res.redirect('/blogs');
+            
+            }else{
+                res.render('show',{foundedBlog: foundedBlog})
+            }
+        })
     })
-})
 
+    //EDIT ROUTE
+
+    app.get('/blogs/:id/edit',(req,res)=>{
+        Blog.findById(req.params.id,(err,foundedBlog)=>{
+            if(err){
+                res.redirect('/blogs'); 
+            }else{
+                res.render('edit',{blog:foundedBlog});
+            }
+        });
+    });
+    //UPDATE ROUTE
+    app.put('/blogs/:id', (req,res)=>{
+        res.send("kekeke")
+    });
+  
 };
 
