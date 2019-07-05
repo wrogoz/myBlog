@@ -14,6 +14,14 @@
     <div class="description">
         <p> <%= foundedBlog.body %> </p>
     </div>
+    <form action="/blogs/<%=foundedBlog._id%>?_method=DELETE" method="POST" >
+         <button class="ui animated button red" tabindex="0" type="submit">
+            <div class="visible content">Delete this blog</div>
+            <div class="hidden content">
+                <i class="right arrow icon"></i>
+            </div>
+        </button>
+    </form>
     
    
 </div>

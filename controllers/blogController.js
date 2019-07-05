@@ -100,6 +100,16 @@ module.exports = (app)=>{
             }
         })
     });
+
+    app.delete('/blogs/:id', (req,res)=>{
+        Blog.findByIdAndRemove(req.params.id,(err)=>{
+            if(err){
+                res.redirect('/blogs');
+            }else{
+                res.redirect('/blogs');
+            }
+        })
+    } )
   
 };
 
